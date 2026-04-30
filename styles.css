@@ -297,6 +297,27 @@ blockquote,
   margin-top: 0.35rem;
 }
 
+.work-actions {
+  margin-top: 1.1rem;
+}
+
+.work-actions a {
+  align-items: center;
+  background: var(--accent);
+  border-radius: var(--radius);
+  color: #fff;
+  display: inline-flex;
+  font-weight: 850;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.7rem 0.95rem;
+}
+
+.work-actions a:hover,
+.work-actions a:focus {
+  background: var(--accent-dark);
+}
+
 .split {
   align-items: start;
   display: grid;

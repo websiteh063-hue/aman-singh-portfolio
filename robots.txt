@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://websiteh063-hue.github.io/aman-singh-portfolio/sitemap.xml
