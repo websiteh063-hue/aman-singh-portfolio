@@ -20,6 +20,13 @@
     <link rel="icon" href="assets/aman-singh.jpg">
     <link rel="sitemap" type="application/xml" href="https://websiteh063-hue.github.io/aman-singh-portfolio/sitemap.xml">
     <link rel="preload" href="assets/aman-singh.jpg" as="image">
+    <script>
+      try {
+        document.documentElement.dataset.theme = localStorage.getItem("theme") || "dark";
+      } catch (error) {
+        document.documentElement.dataset.theme = "dark";
+      }
+    </script>
     <link rel="stylesheet" href="styles.css">
     <script type="application/ld+json">
       {
@@ -44,10 +51,15 @@
     </script>
   </head>
   <body>
+    <canvas class="tech-background" id="tech-background" aria-hidden="true"></canvas>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
       <nav class="nav" aria-label="Primary navigation">
         <a class="brand" href="#home" aria-label="Aman Singh home">Aman Singh</a>
+        <button class="theme-toggle" type="button" aria-label="Switch to light theme" aria-pressed="false">
+          <span class="theme-icon" aria-hidden="true"></span>
+          <span class="theme-text">Dark</span>
+        </button>
         <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open navigation">
           <span></span>
           <span></span>
