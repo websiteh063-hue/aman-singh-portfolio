@@ -159,6 +159,7 @@ a {
 .nav {
   align-items: center;
   display: flex;
+  gap: 1rem;
   justify-content: space-between;
   margin: 0 auto;
   max-width: 1180px;
@@ -169,6 +170,7 @@ a {
 .brand {
   font-size: 1.05rem;
   font-weight: 800;
+  margin-right: auto;
 }
 
 .nav-menu {
@@ -178,6 +180,7 @@ a {
   color: var(--soft-text);
   font-size: 0.95rem;
   font-weight: 650;
+  order: 2;
 }
 
 .nav-menu a:hover,
@@ -196,6 +199,7 @@ a {
   font-weight: 850;
   gap: 0.55rem;
   min-height: 42px;
+  order: 3;
   padding: 0.45rem 0.85rem;
 }
 
@@ -224,6 +228,7 @@ a {
   display: none;
   height: 42px;
   justify-content: center;
+  order: 4;
   padding: 0;
   width: 42px;
 }
@@ -237,9 +242,14 @@ a {
 }
 
 .hero {
+  align-items: center;
   display: grid;
+  gap: clamp(1.5rem, 4vw, 4rem);
   grid-template-columns: minmax(280px, 0.92fr) minmax(320px, 1.08fr);
+  margin: 0 auto;
+  max-width: 1180px;
   min-height: calc(100vh - 72px);
+  padding: clamp(1.25rem, 4vw, 3rem) 1.25rem;
   position: relative;
 }
 
@@ -259,13 +269,18 @@ a {
   height: min(34vw, 360px);
   pointer-events: none;
   position: absolute;
-  right: clamp(1rem, 7vw, 7rem);
+  right: clamp(1rem, 5vw, 5rem);
   top: clamp(6rem, 14vw, 10rem);
   width: min(34vw, 360px);
   z-index: 0;
 }
 
 .hero-media {
+  border: 1px solid var(--glass-line);
+  border-radius: 8px;
+  box-shadow:
+    0 32px 110px rgba(0, 12, 32, 0.42),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08);
   min-height: 520px;
   overflow: hidden;
   position: relative;
@@ -273,6 +288,7 @@ a {
 
 .hero-media::after {
   background:
+    linear-gradient(to top, rgba(8, 17, 31, 0.4), transparent 34%),
     linear-gradient(135deg, transparent 0 44%, rgba(124, 243, 223, 0.22) 45% 46%, transparent 47%),
     linear-gradient(45deg, transparent 0 58%, rgba(75, 182, 255, 0.2) 59% 60%, transparent 61%);
   content: "";
@@ -290,10 +306,26 @@ a {
   width: 100%;
 }
 
+.hero-media:hover img {
+  transform: scale(1.04);
+}
+
 .hero-content {
   animation: hero-rise 900ms ease both;
   align-self: center;
   padding: clamp(2rem, 5vw, 5rem);
+  position: relative;
+}
+
+.hero-content::before {
+  background: linear-gradient(90deg, var(--hud), transparent);
+  content: "";
+  height: 2px;
+  left: clamp(2rem, 5vw, 5rem);
+  opacity: 0.72;
+  position: absolute;
+  top: clamp(1.2rem, 4vw, 3rem);
+  width: min(10rem, 42%);
 }
 
 .eyebrow {
@@ -338,6 +370,23 @@ h3 {
   color: var(--soft-text);
   font-size: clamp(1.05rem, 2vw, 1.3rem);
   max-width: 650px;
+}
+
+.hero-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.35rem;
+}
+
+.hero-badges span {
+  background: color-mix(in srgb, var(--panel-strong) 78%, transparent);
+  border: 1px solid var(--glass-line);
+  border-radius: 999px;
+  color: var(--text);
+  font-size: 0.86rem;
+  font-weight: 850;
+  padding: 0.55rem 0.8rem;
 }
 
 .hero-actions {
@@ -398,11 +447,25 @@ blockquote:hover,
   border-top: 1px solid var(--glass-line);
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  margin: 0 auto;
+  max-width: 1180px;
 }
 
 .stats div {
   min-height: 142px;
   padding: 1.5rem;
+  position: relative;
+}
+
+.stats div::before {
+  background: linear-gradient(180deg, var(--hud), transparent);
+  content: "";
+  height: 42px;
+  left: 0;
+  opacity: 0.8;
+  position: absolute;
+  top: 1.5rem;
+  width: 2px;
 }
 
 .stats div + div {
@@ -435,10 +498,25 @@ blockquote p {
 .section-heading {
   max-width: 780px;
   margin-bottom: 2rem;
+  position: relative;
+}
+
+.section-heading::after {
+  background: linear-gradient(90deg, var(--hud), transparent);
+  content: "";
+  display: block;
+  height: 2px;
+  margin-top: 1.35rem;
+  opacity: 0.64;
+  width: min(15rem, 56vw);
 }
 
 .section-heading.compact {
   margin-bottom: 0;
+}
+
+.section-heading.compact::after {
+  width: min(10rem, 45vw);
 }
 
 .work-grid {
@@ -456,6 +534,28 @@ blockquote,
   border-radius: var(--radius);
   box-shadow: var(--glass-shadow);
   backdrop-filter: blur(16px);
+  overflow: hidden;
+  position: relative;
+}
+
+.work-card::before,
+.service-list article::before,
+blockquote::before,
+.contact-card::before {
+  background: linear-gradient(90deg, transparent, rgba(124, 243, 223, 0.18), transparent);
+  content: "";
+  height: 1px;
+  left: -35%;
+  position: absolute;
+  top: 0;
+  width: 70%;
+}
+
+.work-card:hover::before,
+.service-list article:hover::before,
+blockquote:hover::before,
+.contact-card:hover::before {
+  animation: shimmer-line 850ms ease;
 }
 
 .work-card {
@@ -476,7 +576,19 @@ blockquote,
   margin-bottom: 1.1rem;
   overflow: hidden;
   padding: 1rem;
+  position: relative;
   width: 100%;
+}
+
+.project-preview::after {
+  background:
+    linear-gradient(90deg, transparent 0 42%, rgba(255, 255, 255, 0.1) 43% 44%, transparent 45%),
+    linear-gradient(0deg, transparent 0 62%, rgba(124, 243, 223, 0.16) 63% 64%, transparent 65%);
+  content: "";
+  inset: 0;
+  opacity: 0.75;
+  pointer-events: none;
+  position: absolute;
 }
 
 .project-preview span,
@@ -484,7 +596,9 @@ blockquote,
   color: var(--hud-warm);
   font-size: 0.8rem;
   font-weight: 850;
+  position: relative;
   text-transform: uppercase;
+  z-index: 1;
 }
 
 .project-preview strong,
@@ -493,6 +607,8 @@ blockquote,
   font-size: clamp(1.45rem, 3vw, 2.1rem);
   line-height: 1.05;
   max-width: 10rem;
+  position: relative;
+  z-index: 1;
 }
 
 .project-preview small {
@@ -505,7 +621,9 @@ blockquote,
   max-width: 100%;
   overflow-wrap: anywhere;
   padding: 0.55rem 0.7rem;
+  position: relative;
   width: fit-content;
+  z-index: 1;
 }
 
 .br-preview {
@@ -722,6 +840,7 @@ cite {
   .hero-media {
     aspect-ratio: 4 / 3;
     min-height: 0;
+    order: -1;
   }
 
   .work-grid {
@@ -751,6 +870,10 @@ cite {
     flex-direction: column;
   }
 
+  .theme-toggle {
+    margin-left: auto;
+  }
+
   .stats,
   .work-grid,
   .service-list,
@@ -770,6 +893,10 @@ cite {
   h1 {
     font-size: clamp(3.2rem, 18vw, 5.4rem);
     max-width: 7ch;
+  }
+
+  .hero-badges span {
+    font-size: 0.8rem;
   }
 
   .work-card {
@@ -812,6 +939,16 @@ cite {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes shimmer-line {
+  from {
+    left: -45%;
+  }
+
+  to {
+    left: 100%;
   }
 }
 
