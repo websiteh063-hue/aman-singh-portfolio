@@ -116,6 +116,82 @@ body::after {
   z-index: 0;
 }
 
+.page-loader {
+  align-items: center;
+  background:
+    radial-gradient(circle at center, rgba(75, 182, 255, 0.18), transparent 18rem),
+    var(--page-bg);
+  color: var(--text);
+  display: grid;
+  gap: 1rem;
+  inset: 0;
+  justify-content: center;
+  opacity: 1;
+  pointer-events: auto;
+  position: fixed;
+  text-align: center;
+  transition: opacity 360ms ease, visibility 360ms ease;
+  visibility: visible;
+  z-index: 999;
+}
+
+.page-loader p {
+  color: var(--soft-text);
+  font-size: 0.9rem;
+  font-weight: 850;
+  letter-spacing: 0;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.loader-core {
+  animation: loader-pulse 900ms ease-in-out infinite alternate;
+  border: 1px solid var(--glass-line);
+  border-radius: 999px;
+  box-shadow: 0 0 44px rgba(75, 182, 255, 0.28);
+  display: grid;
+  height: 82px;
+  place-items: center;
+  position: relative;
+  width: 82px;
+}
+
+.loader-core::before,
+.loader-core::after {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  content: "";
+  inset: 8px;
+  position: absolute;
+}
+
+.loader-core::before {
+  animation: loader-spin 780ms linear infinite;
+  border-top-color: var(--hud);
+  border-right-color: var(--hud-strong);
+}
+
+.loader-core::after {
+  animation: loader-spin 1180ms linear infinite reverse;
+  border-bottom-color: var(--hud-warm);
+  border-left-color: var(--glass-line);
+  inset: 18px;
+}
+
+.loader-core span {
+  background: var(--hud-strong);
+  border-radius: 999px;
+  box-shadow: 0 0 22px var(--hud-strong);
+  height: 10px;
+  width: 10px;
+}
+
+.is-loaded .page-loader {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+}
+
 main,
 .site-header,
 .site-footer {
@@ -942,6 +1018,22 @@ cite {
   }
 }
 
+@keyframes loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loader-pulse {
+  from {
+    transform: scale(0.96);
+  }
+
+  to {
+    transform: scale(1.02);
+  }
+}
+
 @keyframes shimmer-line {
   from {
     left: -45%;
@@ -973,6 +1065,16 @@ cite {
 
   .tech-background {
     display: none;
+  }
+
+  .page-loader {
+    transition: none;
+  }
+
+  .loader-core,
+  .loader-core::before,
+  .loader-core::after {
+    animation: none;
   }
 
   .reveal {

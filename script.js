@@ -9,6 +9,18 @@ if (year) {
   year.textContent = new Date().getFullYear();
 }
 
+function markPageLoaded() {
+  document.documentElement.classList.add("is-loaded");
+}
+
+if (document.readyState === "complete") {
+  markPageLoaded();
+} else {
+  window.addEventListener("load", markPageLoaded, { once: true });
+}
+
+window.setTimeout(markPageLoaded, 900);
+
 function setTheme(theme) {
   document.documentElement.dataset.theme = theme;
 
@@ -91,7 +103,7 @@ if (canvas && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     canvas.style.height = `${height}px`;
     ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
 
-    const pointCount = Math.min(82, Math.max(38, Math.floor(width / 18)));
+    const pointCount = Math.min(58, Math.max(28, Math.floor(width / 26)));
     points.length = 0;
 
     for (let index = 0; index < pointCount; index += 1) {

@@ -31,6 +31,10 @@
       } catch (error) {
         document.documentElement.dataset.theme = "dark";
       }
+
+      window.addEventListener("load", function () {
+        document.documentElement.classList.add("is-loaded");
+      });
     </script>
     <link rel="stylesheet" href="styles.css">
     <script type="application/ld+json">
@@ -189,6 +193,12 @@
     </script>
   </head>
   <body>
+    <div class="page-loader" role="status" aria-live="polite" aria-label="Loading portfolio">
+      <div class="loader-core" aria-hidden="true">
+        <span></span>
+      </div>
+      <p>Loading Aman Singh</p>
+    </div>
     <canvas class="tech-background" id="tech-background" aria-hidden="true"></canvas>
     <a class="skip-link" href="#main">Skip to content</a>
     <header class="site-header">
