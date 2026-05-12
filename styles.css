@@ -722,6 +722,10 @@ blockquote:hover::before,
   background: linear-gradient(135deg, rgba(15, 32, 55, 0.88) 0%, rgba(75, 182, 255, 0.28) 100%);
 }
 
+.chemforge-preview {
+  background: linear-gradient(135deg, rgba(15, 32, 55, 0.88) 0%, rgba(124, 243, 223, 0.24) 48%, rgba(255, 179, 71, 0.16) 100%);
+}
+
 .erp-preview {
   background: linear-gradient(135deg, rgba(15, 32, 55, 0.88) 0%, rgba(47, 109, 77, 0.24) 100%);
 }
