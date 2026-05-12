@@ -49,18 +49,6 @@
   box-sizing: border-box;
 }
 
-*,
-*::before,
-*::after {
-  transition:
-    background-color 220ms ease,
-    border-color 220ms ease,
-    box-shadow 220ms ease,
-    color 220ms ease,
-    opacity 500ms ease,
-    transform 500ms ease;
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -78,7 +66,7 @@ body {
 }
 
 body::before {
-  animation: grid-drift 24s linear infinite;
+  animation: grid-drift 42s linear infinite;
   background-image:
     linear-gradient(rgba(75, 182, 255, 0.09) 1px, transparent 1px),
     linear-gradient(90deg, rgba(75, 182, 255, 0.09) 1px, transparent 1px);
@@ -92,12 +80,11 @@ body::before {
 }
 
 body::after {
-  animation: glow-sweep 14s ease-in-out infinite alternate;
+  animation: glow-sweep 24s ease-in-out infinite alternate;
   background:
     radial-gradient(circle at 22% 72%, rgba(124, 243, 223, 0.2), transparent 18rem),
     linear-gradient(120deg, transparent 0%, rgba(75, 182, 255, 0.08) 42%, transparent 70%);
   content: "";
-  filter: blur(2px);
   inset: -20%;
   opacity: 0.82;
   pointer-events: none;
@@ -229,7 +216,7 @@ a {
   position: sticky;
   top: 0;
   z-index: 10;
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(8px);
 }
 
 .nav {
@@ -277,6 +264,7 @@ a {
   min-height: 42px;
   order: 3;
   padding: 0.45rem 0.85rem;
+  transition: border-color 180ms ease, box-shadow 180ms ease, color 180ms ease;
 }
 
 .theme-toggle:hover,
@@ -335,12 +323,12 @@ a {
 }
 
 .hero::after {
-  animation: hud-spin 18s linear infinite;
+  animation: hud-spin 34s linear infinite;
   border: 1px solid color-mix(in srgb, var(--hud) 52%, transparent);
   border-radius: 999px;
   box-shadow:
-    inset 0 0 30px rgba(75, 182, 255, 0.15),
-    0 0 52px rgba(75, 182, 255, 0.12);
+    inset 0 0 20px rgba(75, 182, 255, 0.12),
+    0 0 32px rgba(75, 182, 255, 0.08);
   content: "";
   height: min(34vw, 360px);
   pointer-events: none;
@@ -355,7 +343,7 @@ a {
   border: 1px solid var(--glass-line);
   border-radius: 8px;
   box-shadow:
-    0 32px 110px rgba(0, 12, 32, 0.42),
+    0 24px 64px rgba(0, 12, 32, 0.32),
     inset 0 0 0 1px rgba(255, 255, 255, 0.08);
   min-height: 520px;
   overflow: hidden;
@@ -379,6 +367,7 @@ a {
   object-fit: cover;
   object-position: center top;
   transform: scale(1.015);
+  transition: transform 420ms ease;
   width: 100%;
 }
 
@@ -481,6 +470,7 @@ h3 {
   justify-content: center;
   min-height: 48px;
   padding: 0.75rem 1.1rem;
+  transition: background-color 180ms ease, border-color 180ms ease, color 180ms ease, transform 180ms ease;
 }
 
 .button.primary {
@@ -501,6 +491,7 @@ h3 {
 .reveal {
   opacity: 0;
   transform: translateY(28px);
+  transition: opacity 420ms ease, transform 420ms ease;
 }
 
 .reveal.is-visible {
@@ -513,7 +504,7 @@ h3 {
 blockquote:hover,
 .contact-card:hover {
   border-color: color-mix(in srgb, var(--hud) 62%, var(--glass-line));
-  box-shadow: 0 26px 90px rgba(0, 16, 38, 0.32);
+  box-shadow: 0 18px 48px rgba(0, 16, 38, 0.22);
   transform: translateY(-5px);
 }
 
@@ -609,9 +600,10 @@ blockquote,
   border: 1px solid var(--glass-line);
   border-radius: var(--radius);
   box-shadow: var(--glass-shadow);
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(6px);
   overflow: hidden;
   position: relative;
+  transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
 .work-card::before,
@@ -929,6 +921,20 @@ cite {
 }
 
 @media (max-width: 700px) {
+  body::before,
+  body::after,
+  .hero::after {
+    animation: none;
+  }
+
+  body::after {
+    display: none;
+  }
+
+  .tech-background {
+    display: none;
+  }
+
   .nav-menu {
     background: var(--panel-strong);
     border-bottom: 1px solid var(--glass-line);
@@ -981,6 +987,14 @@ cite {
 
   .work-card {
     min-height: auto;
+  }
+
+  .work-card:hover,
+  .service-list article:hover,
+  blockquote:hover,
+  .contact-card:hover {
+    box-shadow: var(--glass-shadow);
+    transform: none;
   }
 
   .site-footer {

@@ -85,16 +85,22 @@ if (revealItems.length) {
   }
 }
 
-if (canvas && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+const shouldAnimateBackground =
+  canvas &&
+  !window.matchMedia("(prefers-reduced-motion: reduce)").matches &&
+  window.innerWidth >= 760;
+
+if (shouldAnimateBackground) {
   const ctx = canvas.getContext("2d");
   const points = [];
   const pointer = { x: 0, y: 0, active: false };
   let width = 0;
   let height = 0;
   let animationFrame = 0;
+  let lastDraw = 0;
 
   function resizeCanvas() {
-    const pixelRatio = Math.min(window.devicePixelRatio || 1, 2);
+    const pixelRatio = 1;
     width = window.innerWidth;
     height = window.innerHeight;
     canvas.width = Math.floor(width * pixelRatio);
@@ -103,7 +109,7 @@ if (canvas && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     canvas.style.height = `${height}px`;
     ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
 
-    const pointCount = Math.min(58, Math.max(28, Math.floor(width / 26)));
+    const pointCount = Math.min(34, Math.max(18, Math.floor(width / 46)));
     points.length = 0;
 
     for (let index = 0; index < pointCount; index += 1) {
@@ -126,7 +132,13 @@ if (canvas && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     };
   }
 
-  function draw() {
+  function draw(timestamp = 0) {
+    if (timestamp - lastDraw < 33) {
+      animationFrame = window.requestAnimationFrame(draw);
+      return;
+    }
+
+    lastDraw = timestamp;
     const colors = getThemeColors();
     ctx.clearRect(0, 0, width, height);
 
@@ -148,7 +160,7 @@ if (canvas && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
       if (point.y < -40) point.y = height + 40;
       if (point.y > height + 40) point.y = -40;
 
-      for (let nextIndex = index + 1; nextIndex < points.length; nextIndex += 1) {
+      for (let nextIndex = index + 1; nextIndex < points.length; nextIndex += 2) {
         const other = points[nextIndex];
         const distance = Math.hypot(point.x - other.x, point.y - other.y);
 
