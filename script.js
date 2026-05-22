@@ -126,9 +126,9 @@ if (shouldAnimateBackground) {
   function getThemeColors() {
     const isLight = document.documentElement.dataset.theme === "light";
     return {
-      dot: isLight ? "rgba(47, 109, 77, 0.62)" : "rgba(124, 243, 223, 0.72)",
-      line: isLight ? "rgba(47, 109, 77, " : "rgba(75, 182, 255, ",
-      beam: isLight ? "rgba(180, 106, 60, 0.12)" : "rgba(75, 182, 255, 0.12)",
+      dot: isLight ? "rgba(232, 79, 17, 0.58)" : "rgba(255, 179, 92, 0.72)",
+      line: isLight ? "rgba(232, 79, 17, " : "rgba(255, 106, 26, ",
+      beam: isLight ? "rgba(196, 94, 26, 0.11)" : "rgba(255, 179, 92, 0.11)",
     };
   }
 
