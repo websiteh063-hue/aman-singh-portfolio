@@ -7,8 +7,8 @@
   --panel-strong: rgba(24, 20, 18, 0.86);
   --panel-hot: rgba(255, 119, 41, 0.12);
   --text: #fff8ef;
-  --soft-text: #cbbdaf;
-  --muted: #9e9185;
+  --soft-text: #eadbcb;
+  --muted: #d0c0b0;
   --line: rgba(255, 221, 188, 0.14);
   --glass-line: rgba(255, 194, 128, 0.2);
   --accent: #ff6a1a;
@@ -31,7 +31,7 @@
   --panel-strong: rgba(255, 251, 246, 0.92);
   --panel-hot: rgba(255, 106, 26, 0.12);
   --text: #1b1511;
-  --soft-text: #5f5148;
+  --soft-text: #40352e;
   --muted: #76685d;
   --line: rgba(88, 61, 37, 0.16);
   --glass-line: rgba(196, 94, 26, 0.2);
@@ -412,11 +412,13 @@ p {
 }
 
 h1 {
-  font-size: clamp(3.4rem, 8.3vw, 7.2rem);
+  color: #fffaf4;
+  font-size: clamp(3rem, 7.1vw, 6.25rem);
   letter-spacing: 0;
-  line-height: 0.89;
+  line-height: 0.95;
   margin-bottom: 1.3rem;
-  max-width: 10ch;
+  max-width: 11ch;
+  text-shadow: 0 12px 38px rgba(0, 0, 0, 0.42);
   text-wrap: balance;
 }
 
@@ -435,9 +437,11 @@ h3 {
 }
 
 .hero-copy {
-  color: var(--soft-text);
-  font-size: clamp(1.06rem, 1.8vw, 1.24rem);
-  max-width: 620px;
+  color: #f0e4d7;
+  font-size: clamp(1.08rem, 1.75vw, 1.2rem);
+  font-weight: 520;
+  max-width: 640px;
+  text-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
 }
 
 .hero-actions {
@@ -480,7 +484,7 @@ h3 {
 .hero-proof-card {
   align-items: center;
   backdrop-filter: blur(18px);
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.04));
+  background: linear-gradient(135deg, rgba(54, 39, 30, 0.88), rgba(38, 25, 20, 0.7));
   border: 1px solid var(--glass-line);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
@@ -509,7 +513,7 @@ h3 {
 }
 
 .hero-proof-card span {
-  color: var(--soft-text);
+  color: #eadbcb;
   display: block;
   font-size: 0.9rem;
   line-height: 1.45;
@@ -946,7 +950,7 @@ h3 {
 .work-card p,
 .service-list p,
 blockquote p {
-  color: var(--soft-text);
+  color: color-mix(in srgb, var(--soft-text) 92%, var(--text));
 }
 
 .section,
@@ -1230,19 +1234,30 @@ blockquote:hover::before,
 }
 
 .about {
+  backdrop-filter: blur(18px);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.055), rgba(255, 106, 26, 0.035));
   border-bottom: 1px solid var(--glass-line);
   border-top: 1px solid var(--glass-line);
+  border-radius: var(--radius);
   display: grid;
   gap: 2rem;
   grid-template-columns: minmax(280px, 0.9fr) minmax(320px, 1.1fr);
+  padding-left: clamp(1.25rem, 4vw, 2rem);
+  padding-right: clamp(1.25rem, 4vw, 2rem);
 }
 
 .about h2 {
-  font-size: clamp(1.9rem, 4vw, 3.4rem);
+  font-size: clamp(1.85rem, 3.8vw, 3.25rem);
 }
 
 .about-copy {
-  font-size: 1.06rem;
+  color: #f0e4d7;
+  font-size: 1.08rem;
+  font-weight: 500;
+}
+
+.about-copy p {
+  margin-bottom: 1rem;
 }
 
 .testimonial-grid {
@@ -1436,8 +1451,8 @@ cite {
   }
 
   h1 {
-    font-size: clamp(3rem, 15vw, 5.2rem);
-    max-width: 9ch;
+    font-size: clamp(2.85rem, 13vw, 4.85rem);
+    max-width: 10ch;
   }
 
   .hero-proof-card {
