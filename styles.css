@@ -540,6 +540,9 @@ h3 {
   min-height: 610px;
   perspective: 1100px;
   position: relative;
+  transform-style: preserve-3d;
+  --tilt-x: 0deg;
+  --tilt-y: 0deg;
 }
 
 .hero-stage::before {
@@ -553,6 +556,176 @@ h3 {
   height: min(70vw, 560px);
   position: absolute;
   width: min(70vw, 560px);
+}
+
+.ui-perspective-stack {
+  height: min(70vw, 510px);
+  position: absolute;
+  transform:
+    rotateX(calc(58deg + var(--tilt-x)))
+    rotateZ(calc(-20deg + var(--tilt-y)))
+    translate3d(0, 1.5rem, -90px);
+  transform-style: preserve-3d;
+  transition: transform 220ms ease-out;
+  width: min(70vw, 510px);
+  z-index: 1;
+}
+
+.ui-slab {
+  backdrop-filter: blur(18px);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04)),
+    linear-gradient(135deg, rgba(255, 106, 26, 0.16), rgba(255, 208, 138, 0.04));
+  border: 1px solid rgba(255, 194, 128, 0.26);
+  border-radius: var(--radius);
+  box-shadow:
+    0 28px 70px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  display: grid;
+  gap: 0.5rem;
+  left: 50%;
+  min-height: 126px;
+  padding: 1rem;
+  position: absolute;
+  top: 50%;
+  transform-style: preserve-3d;
+  width: min(74%, 340px);
+}
+
+.ui-slab::before {
+  background:
+    linear-gradient(90deg, rgba(255, 208, 138, 0.24), transparent 36%),
+    repeating-linear-gradient(90deg, transparent 0 18px, rgba(255, 255, 255, 0.08) 19px 20px);
+  border-radius: 999px;
+  content: "";
+  height: 8px;
+  left: 1rem;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+
+.ui-slab span {
+  background: linear-gradient(135deg, var(--accent), var(--amber));
+  border-radius: 999px;
+  box-shadow: 0 0 24px rgba(255, 106, 26, 0.3);
+  height: 34px;
+  margin-top: 1.6rem;
+  width: 34px;
+}
+
+.ui-slab strong {
+  color: var(--text);
+  font-size: 0.9rem;
+  line-height: 1;
+}
+
+.ui-slab i {
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.24), transparent 68%),
+    linear-gradient(90deg, rgba(255, 106, 26, 0.26), transparent 52%);
+  border-radius: 999px;
+  display: block;
+  height: 10px;
+  width: 76%;
+}
+
+.slab-primary {
+  animation: slab-float 6s ease-in-out infinite alternate;
+  transform: translate3d(-74%, -74%, 46px);
+}
+
+.slab-secondary {
+  animation: slab-float 7s ease-in-out infinite alternate-reverse;
+  opacity: 0.78;
+  transform: translate3d(-22%, -50%, 6px) scale(0.92);
+}
+
+.slab-tertiary {
+  animation: slab-float 6.5s ease-in-out infinite alternate;
+  opacity: 0.58;
+  transform: translate3d(-48%, -13%, -46px) scale(0.84);
+}
+
+.floating-shapes {
+  inset: 0;
+  pointer-events: none;
+  position: absolute;
+  transform:
+    rotateX(var(--tilt-x))
+    rotateY(var(--tilt-y));
+  transform-style: preserve-3d;
+  transition: transform 220ms ease-out;
+  z-index: 5;
+}
+
+.shape-cube {
+  animation: cube-drift 5.4s ease-in-out infinite alternate;
+  background:
+    linear-gradient(135deg, rgba(255, 208, 138, 0.9), rgba(255, 106, 26, 0.8)),
+    linear-gradient(45deg, rgba(255, 255, 255, 0.26), transparent);
+  border: 1px solid rgba(255, 230, 194, 0.34);
+  border-radius: 8px;
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.32),
+    0 0 34px rgba(255, 106, 26, 0.24);
+  display: block;
+  height: 54px;
+  position: absolute;
+  transform: rotateX(58deg) rotateZ(45deg);
+  width: 54px;
+}
+
+.shape-cube::before,
+.shape-cube::after {
+  background: rgba(255, 255, 255, 0.12);
+  content: "";
+  position: absolute;
+}
+
+.shape-cube::before {
+  bottom: -10px;
+  height: 10px;
+  left: 5px;
+  transform: skewX(45deg);
+  width: 100%;
+}
+
+.shape-cube::after {
+  height: 100%;
+  right: -10px;
+  top: 5px;
+  transform: skewY(45deg);
+  width: 10px;
+}
+
+.cube-one {
+  right: 8%;
+  top: 10%;
+}
+
+.cube-two {
+  animation-delay: -1.8s;
+  bottom: 8%;
+  height: 38px;
+  left: 8%;
+  opacity: 0.78;
+  width: 38px;
+}
+
+.shape-pill {
+  animation: pill-orbit 7s ease-in-out infinite alternate;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.16), rgba(255, 106, 26, 0.28));
+  border: 1px solid var(--glass-line);
+  border-radius: 999px;
+  box-shadow: 0 18px 52px rgba(255, 106, 26, 0.18);
+  display: block;
+  height: 84px;
+  position: absolute;
+  right: 2%;
+  top: 56%;
+  transform: rotate(-18deg);
+  width: 28px;
 }
 
 .hero-media {
@@ -570,9 +743,14 @@ h3 {
   max-width: 430px;
   overflow: hidden;
   position: relative;
-  transform: rotateY(-8deg) rotateX(2deg);
+  transform:
+    rotateY(calc(-8deg + var(--tilt-y)))
+    rotateX(calc(2deg + var(--tilt-x)))
+    translateZ(72px);
+  transform-style: preserve-3d;
+  transition: transform 220ms ease-out, box-shadow 220ms ease-out;
   width: min(82vw, 430px);
-  z-index: 2;
+  z-index: 3;
 }
 
 .hero-media::before {
@@ -602,7 +780,7 @@ h3 {
   height: 100%;
   object-fit: cover;
   object-position: center top;
-  transform: scale(1.03);
+  transform: translateZ(28px) scale(1.035);
   width: 100%;
 }
 
@@ -641,6 +819,7 @@ h3 {
   min-height: 48px;
   min-width: 58px;
   position: absolute;
+  transform: translateZ(96px);
 }
 
 .chip-react {
@@ -674,6 +853,7 @@ h3 {
   min-width: 150px;
   padding: 0.86rem;
   position: absolute;
+  transform-style: preserve-3d;
   z-index: 4;
 }
 
@@ -698,12 +878,14 @@ h3 {
   animation: float-slow 4.5s ease-in-out infinite alternate;
   right: 3%;
   top: 18%;
+  transform: translateZ(118px);
 }
 
 .hud-card-bottom {
   animation: float-slow 5.2s ease-in-out infinite alternate-reverse;
   bottom: 15%;
   left: 1%;
+  transform: translateZ(126px);
 }
 
 .reveal {
@@ -815,6 +997,7 @@ blockquote,
   box-shadow: var(--glass-shadow);
   overflow: hidden;
   position: relative;
+  transform-style: preserve-3d;
   transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
@@ -837,7 +1020,7 @@ blockquote:hover,
 .contact-card:hover {
   border-color: color-mix(in srgb, var(--accent) 66%, var(--glass-line));
   box-shadow: 0 24px 76px rgba(255, 106, 26, 0.14), var(--glass-shadow);
-  transform: translateY(-5px);
+  transform: translateY(-7px) rotateX(2deg) rotateY(-2deg);
 }
 
 .work-card:hover::before,
@@ -866,6 +1049,7 @@ blockquote:hover::before,
   overflow: hidden;
   padding: 1rem;
   position: relative;
+  transform: translateZ(26px);
   width: 100%;
 }
 
@@ -1154,7 +1338,9 @@ cite {
   .hero::before,
   .hero::after,
   .orbit-ring,
-  .tech-orbit {
+  .tech-orbit,
+  .ui-slab,
+  .floating-shapes {
     animation: none;
   }
 
@@ -1218,7 +1404,20 @@ cite {
   }
 
   .hero-media {
+    transform: none;
     width: min(82vw, 330px);
+  }
+
+  .ui-perspective-stack {
+    height: 360px;
+    opacity: 0.6;
+    transform: rotateX(58deg) rotateZ(-20deg) translate3d(0, 1rem, -80px);
+    width: 360px;
+  }
+
+  .ui-slab {
+    min-height: 100px;
+    width: 270px;
   }
 
   .hud-card {
@@ -1303,11 +1502,17 @@ cite {
 
 @keyframes portrait-float {
   from {
-    transform: translate3d(0, 0, 0) rotateY(-8deg) rotateX(2deg);
+    transform:
+      translate3d(0, 0, 72px)
+      rotateY(calc(-8deg + var(--tilt-y)))
+      rotateX(calc(2deg + var(--tilt-x)));
   }
 
   to {
-    transform: translate3d(0, -14px, 0) rotateY(-4deg) rotateX(3deg);
+    transform:
+      translate3d(0, -14px, 72px)
+      rotateY(calc(-4deg + var(--tilt-y)))
+      rotateX(calc(3deg + var(--tilt-x)));
   }
 }
 
@@ -1330,6 +1535,38 @@ cite {
   to {
     opacity: 1;
     transform: scale(1.04);
+  }
+}
+
+@keyframes slab-float {
+  from {
+    filter: brightness(0.96);
+    margin-top: 0;
+  }
+
+  to {
+    filter: brightness(1.08);
+    margin-top: -16px;
+  }
+}
+
+@keyframes cube-drift {
+  from {
+    transform: translate3d(0, 0, 110px) rotateX(58deg) rotateZ(45deg);
+  }
+
+  to {
+    transform: translate3d(12px, -18px, 150px) rotateX(62deg) rotateZ(64deg);
+  }
+}
+
+@keyframes pill-orbit {
+  from {
+    transform: translate3d(0, 0, 80px) rotate(-18deg);
+  }
+
+  to {
+    transform: translate3d(-16px, -24px, 130px) rotate(14deg);
   }
 }
 
