@@ -617,7 +617,7 @@ h3 {
   transform: translate3d(0, 1.5rem, 0) rotate(-8deg);
   transition: transform 220ms ease-out;
   width: min(70vw, 510px);
-  z-index: 1;
+  z-index: 5;
 }
 
 .ui-slab {
@@ -700,7 +700,7 @@ h3 {
   pointer-events: none;
   position: absolute;
   transition: transform 220ms ease-out;
-  z-index: 5;
+  z-index: 8;
 }
 
 .shape-cube {
@@ -792,7 +792,7 @@ h3 {
   transform: translateY(0);
   transition: transform 220ms ease-out, box-shadow 220ms ease-out;
   width: min(82vw, 470px);
-  z-index: 3;
+  z-index: 4;
 }
 
 .hero-media::before {
@@ -843,7 +843,7 @@ h3 {
   position: absolute;
   transform: rotate(-12deg);
   width: min(76vw, 520px);
-  z-index: 1;
+  z-index: 2;
 }
 
 .tech-orbit {
@@ -851,7 +851,7 @@ h3 {
   height: min(76vw, 520px);
   position: absolute;
   width: min(76vw, 520px);
-  z-index: 3;
+  z-index: 7;
 }
 
 .orbit-chip {
@@ -869,6 +869,7 @@ h3 {
   min-height: 48px;
   min-width: 58px;
   position: absolute;
+  z-index: 8;
 }
 
 .chip-react {
@@ -902,7 +903,7 @@ h3 {
   min-width: 150px;
   padding: 0.86rem;
   position: absolute;
-  z-index: 4;
+  z-index: 9;
 }
 
 .hud-card span {
