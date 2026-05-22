@@ -25,7 +25,6 @@
     <link rel="icon" href="assets/aman-singh.jpg">
     <link rel="sitemap" type="application/xml" href="https://websiteh063-hue.github.io/aman-singh-portfolio/sitemap.xml">
     <link rel="preload" href="assets/aman-singh-3d-character.jpg" as="image">
-    <link rel="preload" href="assets/aman-singh-model.glb" as="fetch" type="model/gltf-binary" crossorigin>
     <script>
       try {
         document.documentElement.dataset.theme = localStorage.getItem("theme") || "dark";
@@ -37,7 +36,6 @@
         document.documentElement.classList.add("is-loaded");
       });
     </script>
-    <script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
     <link rel="stylesheet" href="styles.css">
     <script type="application/ld+json">
       {
@@ -314,23 +312,8 @@
             <span class="orbit-chip chip-code">JS</span>
             <span class="orbit-chip chip-search">GSC</span>
           </div>
-          <div class="hero-media hero-model-frame">
-            <model-viewer
-              class="hero-model"
-              src="assets/aman-singh-model.glb"
-              poster="assets/aman-singh-3d-character.jpg"
-              alt="Aman Singh 3D model avatar, SEO specialist and website designer"
-              auto-rotate
-              camera-controls
-              disable-zoom
-              interaction-prompt="none"
-              shadow-intensity="1"
-              shadow-softness="0.85"
-              exposure="1.08"
-              camera-orbit="0deg 74deg 2.7m"
-              field-of-view="30deg">
-              <img class="model-fallback" slot="poster" src="assets/aman-singh-3d-character.jpg" width="980" height="980" alt="Aman Singh 3D character avatar, SEO specialist and web professional" decoding="async">
-            </model-viewer>
+          <div class="hero-media">
+            <img src="assets/aman-singh-3d-character.jpg" width="980" height="980" alt="Aman Singh 2D character avatar, SEO specialist and web professional" fetchpriority="high" decoding="async">
           </div>
           <div class="hud-card hud-card-top" aria-hidden="true">
             <span></span>

@@ -580,9 +580,7 @@ h3 {
   display: grid;
   justify-items: center;
   min-height: 610px;
-  perspective: 1100px;
   position: relative;
-  transform-style: preserve-3d;
   --tilt-x: 0deg;
   --tilt-y: 0deg;
 }
@@ -609,7 +607,6 @@ h3 {
   filter: blur(8px);
   height: 78px;
   position: absolute;
-  transform: rotateX(72deg) translateZ(-60px);
   width: min(66vw, 460px);
   z-index: 1;
 }
@@ -617,11 +614,7 @@ h3 {
 .ui-perspective-stack {
   height: min(70vw, 510px);
   position: absolute;
-  transform:
-    rotateX(calc(58deg + var(--tilt-x)))
-    rotateZ(calc(-20deg + var(--tilt-y)))
-    translate3d(0, 1.5rem, -90px);
-  transform-style: preserve-3d;
+  transform: translate3d(0, 1.5rem, 0) rotate(-8deg);
   transition: transform 220ms ease-out;
   width: min(70vw, 510px);
   z-index: 1;
@@ -644,7 +637,6 @@ h3 {
   padding: 1rem;
   position: absolute;
   top: 50%;
-  transform-style: preserve-3d;
   width: min(74%, 340px);
 }
 
@@ -688,29 +680,25 @@ h3 {
 
 .slab-primary {
   animation: slab-float 6s ease-in-out infinite alternate;
-  transform: translate3d(-74%, -74%, 46px);
+  transform: translate(-74%, -74%);
 }
 
 .slab-secondary {
   animation: slab-float 7s ease-in-out infinite alternate-reverse;
   opacity: 0.78;
-  transform: translate3d(-22%, -50%, 6px) scale(0.92);
+  transform: translate(-22%, -50%) scale(0.92);
 }
 
 .slab-tertiary {
   animation: slab-float 6.5s ease-in-out infinite alternate;
   opacity: 0.58;
-  transform: translate3d(-48%, -13%, -46px) scale(0.84);
+  transform: translate(-48%, -13%) scale(0.84);
 }
 
 .floating-shapes {
   inset: 0;
   pointer-events: none;
   position: absolute;
-  transform:
-    rotateX(var(--tilt-x))
-    rotateY(var(--tilt-y));
-  transform-style: preserve-3d;
   transition: transform 220ms ease-out;
   z-index: 5;
 }
@@ -728,7 +716,7 @@ h3 {
   display: block;
   height: 54px;
   position: absolute;
-  transform: rotateX(58deg) rotateZ(45deg);
+  transform: rotate(45deg);
   width: 54px;
 }
 
@@ -801,19 +789,10 @@ h3 {
   max-width: 470px;
   overflow: hidden;
   position: relative;
-  transform:
-    rotateY(calc(-8deg + var(--tilt-y)))
-    rotateX(calc(2deg + var(--tilt-x)))
-    translateZ(72px);
-  transform-style: preserve-3d;
+  transform: translateY(0);
   transition: transform 220ms ease-out, box-shadow 220ms ease-out;
   width: min(82vw, 470px);
   z-index: 3;
-}
-
-.hero-model-frame {
-  display: grid;
-  place-items: center;
 }
 
 .hero-media::before {
@@ -841,36 +820,13 @@ h3 {
   z-index: 1;
 }
 
-.hero-media > img,
-.model-fallback {
+.hero-media img {
   filter: saturate(1.08) contrast(1.04) brightness(1.02) drop-shadow(0 18px 18px rgba(0, 0, 0, 0.34));
   height: 100%;
   object-fit: cover;
   object-position: center center;
-  transform: translateZ(28px) scale(1.01);
+  transform: scale(1.01);
   width: 100%;
-}
-
-.hero-model {
-  background: transparent;
-  height: 100%;
-  position: relative;
-  width: 100%;
-  z-index: 3;
-}
-
-.hero-model::part(default-progress-bar) {
-  background-color: var(--accent);
-  height: 3px;
-}
-
-.hero-model::part(default-progress-mask) {
-  background-color: rgba(255, 255, 255, 0.12);
-}
-
-.model-fallback {
-  inset: 0;
-  position: absolute;
 }
 
 .hero-media + .hud-card::before,
@@ -885,7 +841,7 @@ h3 {
   box-shadow: inset 0 0 28px rgba(255, 106, 26, 0.12);
   height: min(76vw, 520px);
   position: absolute;
-  transform: rotateX(64deg) rotateZ(-12deg);
+  transform: rotate(-12deg);
   width: min(76vw, 520px);
   z-index: 1;
 }
@@ -913,7 +869,6 @@ h3 {
   min-height: 48px;
   min-width: 58px;
   position: absolute;
-  transform: translateZ(96px);
 }
 
 .chip-react {
@@ -947,7 +902,6 @@ h3 {
   min-width: 150px;
   padding: 0.86rem;
   position: absolute;
-  transform-style: preserve-3d;
   z-index: 4;
 }
 
@@ -972,14 +926,12 @@ h3 {
   animation: float-slow 4.5s ease-in-out infinite alternate;
   right: 3%;
   top: 18%;
-  transform: translateZ(118px);
 }
 
 .hud-card-bottom {
   animation: float-slow 5.2s ease-in-out infinite alternate-reverse;
   bottom: 15%;
   left: 1%;
-  transform: translateZ(126px);
 }
 
 .reveal {
@@ -1091,7 +1043,6 @@ blockquote,
   box-shadow: var(--glass-shadow);
   overflow: hidden;
   position: relative;
-  transform-style: preserve-3d;
   transition: border-color 180ms ease, box-shadow 180ms ease, transform 180ms ease;
 }
 
@@ -1114,7 +1065,7 @@ blockquote:hover,
 .contact-card:hover {
   border-color: color-mix(in srgb, var(--accent) 66%, var(--glass-line));
   box-shadow: 0 24px 76px rgba(255, 106, 26, 0.14), var(--glass-shadow);
-  transform: translateY(-7px) rotateX(2deg) rotateY(-2deg);
+  transform: translateY(-6px);
 }
 
 .work-card:hover::before,
@@ -1143,7 +1094,6 @@ blockquote:hover::before,
   overflow: hidden;
   padding: 1rem;
   position: relative;
-  transform: translateZ(26px);
   width: 100%;
 }
 
@@ -1516,7 +1466,7 @@ cite {
   .ui-perspective-stack {
     height: 360px;
     opacity: 0.6;
-    transform: rotateX(58deg) rotateZ(-20deg) translate3d(0, 1rem, -80px);
+    transform: rotate(-8deg) translate3d(0, 1rem, 0);
     width: 360px;
   }
 
@@ -1607,17 +1557,11 @@ cite {
 
 @keyframes portrait-float {
   from {
-    transform:
-      translate3d(0, 0, 72px)
-      rotateY(calc(-8deg + var(--tilt-y)))
-      rotateX(calc(2deg + var(--tilt-x)));
+    transform: translateY(0);
   }
 
   to {
-    transform:
-      translate3d(0, -14px, 72px)
-      rotateY(calc(-4deg + var(--tilt-y)))
-      rotateX(calc(3deg + var(--tilt-x)));
+    transform: translateY(-14px);
   }
 }
 
@@ -1657,21 +1601,21 @@ cite {
 
 @keyframes cube-drift {
   from {
-    transform: translate3d(0, 0, 110px) rotateX(58deg) rotateZ(45deg);
+    transform: translate(0, 0) rotate(45deg);
   }
 
   to {
-    transform: translate3d(12px, -18px, 150px) rotateX(62deg) rotateZ(64deg);
+    transform: translate(12px, -18px) rotate(64deg);
   }
 }
 
 @keyframes pill-orbit {
   from {
-    transform: translate3d(0, 0, 80px) rotate(-18deg);
+    transform: translate(0, 0) rotate(-18deg);
   }
 
   to {
-    transform: translate3d(-16px, -24px, 130px) rotate(14deg);
+    transform: translate(-16px, -24px) rotate(14deg);
   }
 }
 
@@ -1687,11 +1631,11 @@ cite {
 
 @keyframes orbit-tilt {
   from {
-    transform: rotateX(64deg) rotateZ(-12deg);
+    transform: rotate(-12deg);
   }
 
   to {
-    transform: rotateX(64deg) rotateZ(348deg);
+    transform: rotate(348deg);
   }
 }
 
@@ -1723,11 +1667,11 @@ cite {
 
 @keyframes hud-spin {
   from {
-    transform: rotateX(62deg) rotateZ(0deg);
+    transform: rotate(0deg);
   }
 
   to {
-    transform: rotateX(62deg) rotateZ(360deg);
+    transform: rotate(360deg);
   }
 }
 

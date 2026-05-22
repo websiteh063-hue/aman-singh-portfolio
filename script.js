@@ -4,8 +4,6 @@ const themeToggle = document.querySelector(".theme-toggle");
 const themeText = document.querySelector(".theme-text");
 const canvas = document.querySelector("#tech-background");
 const year = document.querySelector("#year");
-const heroStage = document.querySelector(".hero-stage");
-const motionCards = document.querySelectorAll(".work-card");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 if (year) {
@@ -92,45 +90,6 @@ const shouldAnimateBackground =
   canvas &&
   !reducedMotion &&
   window.innerWidth >= 760;
-
-if (heroStage && !reducedMotion && window.innerWidth >= 900) {
-  let tiltFrame = 0;
-
-  heroStage.addEventListener("pointermove", (event) => {
-    if (tiltFrame) return;
-
-    tiltFrame = window.requestAnimationFrame(() => {
-      const rect = heroStage.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width - 0.5;
-      const y = (event.clientY - rect.top) / rect.height - 0.5;
-
-      heroStage.style.setProperty("--tilt-y", `${x * 8}deg`);
-      heroStage.style.setProperty("--tilt-x", `${y * -7}deg`);
-      tiltFrame = 0;
-    });
-  });
-
-  heroStage.addEventListener("pointerleave", () => {
-    heroStage.style.setProperty("--tilt-y", "0deg");
-    heroStage.style.setProperty("--tilt-x", "0deg");
-  });
-}
-
-if (motionCards.length && !reducedMotion && window.innerWidth >= 900) {
-  motionCards.forEach((card) => {
-    card.addEventListener("pointermove", (event) => {
-      const rect = card.getBoundingClientRect();
-      const x = (event.clientX - rect.left) / rect.width - 0.5;
-      const y = (event.clientY - rect.top) / rect.height - 0.5;
-
-      card.style.transform = `translateY(-7px) rotateX(${y * -5}deg) rotateY(${x * 5}deg)`;
-    });
-
-    card.addEventListener("pointerleave", () => {
-      card.style.transform = "";
-    });
-  });
-}
 
 if (shouldAnimateBackground) {
   const ctx = canvas.getContext("2d");
