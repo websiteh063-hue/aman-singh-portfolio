@@ -12,7 +12,7 @@
   --accent: #111111;
   --accent-soft: #e8e8e8;
   --radius: 8px;
-  --shadow: 8px 8px 0 #111111;
+  --shadow: none;
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
@@ -29,7 +29,7 @@
   --subtle-line: rgba(245, 245, 245, 0.16);
   --accent: #f5f5f5;
   --accent-soft: #242424;
-  --shadow: 8px 8px 0 #f5f5f5;
+  --shadow: none;
 }
 
 * {
@@ -131,8 +131,7 @@ p {
 }
 
 .site-header {
-  background: color-mix(in srgb, var(--page-bg) 90%, transparent);
-  backdrop-filter: blur(14px);
+  background: var(--page-bg);
   position: sticky;
   top: 0;
   z-index: 10;
@@ -144,9 +143,10 @@ p {
   gap: 1rem;
   justify-content: space-between;
   margin: 0 auto;
-  max-width: 1180px;
-  min-height: 88px;
-  padding: 0 1.5rem;
+  max-width: 1440px;
+  min-height: 104px;
+  padding: 0 8rem;
+  position: relative;
 }
 
 .brand {
@@ -160,7 +160,11 @@ p {
   font-weight: 900;
   height: 48px;
   justify-content: center;
-  margin-right: auto;
+  left: 50%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
   width: 48px;
 }
 
@@ -174,7 +178,7 @@ p {
   gap: 1.2rem;
   font-size: 0.96rem;
   font-weight: 760;
-  order: 2;
+  order: 1;
 }
 
 .nav-menu a {
@@ -214,6 +218,19 @@ p {
   padding: 0.45rem 0.9rem;
 }
 
+.nav-social {
+  align-items: center;
+  display: flex;
+  gap: 0.9rem;
+  margin-left: auto;
+  order: 2;
+}
+
+.nav-social a {
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
 .theme-icon {
   background: var(--text);
   border-radius: 999px;
@@ -246,62 +263,46 @@ p {
 .hero {
   align-items: center;
   display: grid;
-  gap: clamp(2rem, 6vw, 5rem);
-  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  grid-template-columns: 1fr 1fr;
   margin: 0 auto;
-  max-width: 1180px;
-  min-height: calc(100vh - 88px);
-  padding: 2rem 1.5rem 4rem;
+  max-width: 1440px;
+  min-height: calc(100vh - 104px);
+  padding: 1rem 8rem 3rem;
   position: relative;
-}
-
-.social-rail {
-  bottom: 2rem;
-  display: grid;
-  gap: 0.7rem;
-  left: 1.5rem;
-  position: fixed;
-  z-index: 5;
-}
-
-.social-rail a {
-  align-items: center;
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  display: inline-flex;
-  font-size: 0.76rem;
-  font-weight: 900;
-  height: 38px;
-  justify-content: center;
-  width: 38px;
-}
-
-.social-rail a:hover,
-.social-rail a:focus {
-  background: var(--text);
-  color: var(--bg);
 }
 
 .hero-illustration {
   align-self: center;
   justify-self: center;
-  max-width: 460px;
+  max-width: 580px;
   position: relative;
-  width: min(78vw, 460px);
+  width: min(82vw, 580px);
+}
+
+.hero-illustration::after {
+  background: var(--text);
+  bottom: 0.8rem;
+  content: "";
+  height: 2px;
+  left: 12%;
+  position: absolute;
+  width: 76%;
+  z-index: 0;
 }
 
 .hero-illustration::before {
-  border: 2px solid var(--line);
-  border-radius: 999px;
   content: "";
-  inset: 8%;
+  background: radial-gradient(circle, var(--accent-soft), transparent 68%);
+  border-radius: 999px;
+  inset: 0;
   position: absolute;
   z-index: 0;
 }
 
 .hero-illustration img {
   aspect-ratio: 1;
-  border-radius: 999px;
+  border-radius: 0;
   filter: grayscale(0.08) contrast(1.05);
   object-fit: cover;
   position: relative;
@@ -322,10 +323,11 @@ p {
 }
 
 h1 {
-  font-size: clamp(3rem, 6.8vw, 6.6rem);
+  font-size: clamp(3.4rem, 6.4vw, 6.25rem);
   letter-spacing: -0.03em;
   line-height: 0.94;
   margin-bottom: 1.2rem;
+  text-transform: capitalize;
 }
 
 .hero-copy,
@@ -443,7 +445,7 @@ h3 {
   background: var(--panel);
   border: 2px solid var(--line);
   border-radius: var(--radius);
-  box-shadow: var(--shadow);
+  box-shadow: none;
   display: flex;
   flex-direction: column;
   min-height: 520px;
@@ -452,8 +454,7 @@ h3 {
 }
 
 .work-card:hover {
-  box-shadow: 11px 11px 0 var(--line);
-  transform: translate(-3px, -3px);
+  transform: translateY(-4px);
 }
 
 .project-preview {
@@ -651,10 +652,6 @@ cite {
   .hero-illustration {
     order: -1;
     width: min(72vw, 340px);
-  }
-
-  .social-rail {
-    display: none;
   }
 
   .nav-menu {
