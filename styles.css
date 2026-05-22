@@ -786,19 +786,19 @@ h3 {
 
 .hero-media {
   animation: portrait-float 5.8s ease-in-out infinite alternate;
-  aspect-ratio: 0.74;
+  aspect-ratio: 1;
   background:
     radial-gradient(circle at 50% 16%, rgba(255, 245, 224, 0.96), rgba(255, 184, 96, 0.18) 42%, transparent 68%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.02)),
     linear-gradient(145deg, rgba(255, 106, 26, 0.28), rgba(36, 22, 18, 0.9));
   border: 2px solid rgba(255, 211, 159, 0.42);
-  border-radius: 46% 46% 16px 16px;
+  border-radius: 34px;
   box-shadow:
     0 42px 120px rgba(0, 0, 0, 0.48),
     0 0 86px rgba(255, 106, 26, 0.28),
     16px 18px 0 rgba(255, 106, 26, 0.11),
     inset 0 0 0 1px rgba(255, 255, 255, 0.08);
-  max-width: 430px;
+  max-width: 470px;
   overflow: hidden;
   position: relative;
   transform:
@@ -807,7 +807,7 @@ h3 {
     translateZ(72px);
   transform-style: preserve-3d;
   transition: transform 220ms ease-out, box-shadow 220ms ease-out;
-  width: min(82vw, 430px);
+  width: min(82vw, 470px);
   z-index: 3;
 }
 
@@ -826,8 +826,8 @@ h3 {
 
 .hero-media::after {
   background:
-    radial-gradient(circle at 50% 90%, rgba(255, 106, 26, 0.28), transparent 28%),
-    linear-gradient(to top, rgba(16, 13, 11, 0.52), transparent 38%),
+    radial-gradient(circle at 50% 90%, rgba(255, 106, 26, 0.2), transparent 30%),
+    linear-gradient(to top, rgba(16, 13, 11, 0.24), transparent 34%),
     radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.25), transparent 28%);
   content: "";
   inset: 0;
@@ -837,11 +837,11 @@ h3 {
 }
 
 .hero-media img {
-  filter: saturate(1.35) contrast(1.14) brightness(1.06) drop-shadow(0 18px 18px rgba(0, 0, 0, 0.34));
+  filter: saturate(1.08) contrast(1.04) brightness(1.02) drop-shadow(0 18px 18px rgba(0, 0, 0, 0.34));
   height: 100%;
   object-fit: cover;
-  object-position: center top;
-  transform: translateZ(28px) scale(1.035);
+  object-position: center center;
+  transform: translateZ(28px) scale(1.01);
   width: 100%;
 }
 
@@ -1482,7 +1482,7 @@ cite {
 
   .hero-media {
     transform: none;
-    width: min(82vw, 330px);
+    width: min(82vw, 350px);
   }
 
   .ui-perspective-stack {
