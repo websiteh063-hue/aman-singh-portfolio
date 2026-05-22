@@ -611,90 +611,6 @@ h3 {
   z-index: 1;
 }
 
-.ui-perspective-stack {
-  height: min(70vw, 510px);
-  position: absolute;
-  transform: translate3d(0, 1.5rem, 0) rotate(-8deg);
-  transition: transform 220ms ease-out;
-  width: min(70vw, 510px);
-  z-index: 5;
-}
-
-.ui-slab {
-  backdrop-filter: blur(18px);
-  background:
-    linear-gradient(135deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.04)),
-    linear-gradient(135deg, rgba(255, 106, 26, 0.16), rgba(255, 208, 138, 0.04));
-  border: 1px solid rgba(255, 194, 128, 0.26);
-  border-radius: var(--radius);
-  box-shadow:
-    0 28px 70px rgba(0, 0, 0, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
-  display: grid;
-  gap: 0.5rem;
-  left: 50%;
-  min-height: 126px;
-  padding: 1rem;
-  position: absolute;
-  top: 50%;
-  width: min(74%, 340px);
-}
-
-.ui-slab::before {
-  background:
-    linear-gradient(90deg, rgba(255, 208, 138, 0.24), transparent 36%),
-    repeating-linear-gradient(90deg, transparent 0 18px, rgba(255, 255, 255, 0.08) 19px 20px);
-  border-radius: 999px;
-  content: "";
-  height: 8px;
-  left: 1rem;
-  position: absolute;
-  right: 1rem;
-  top: 1rem;
-}
-
-.ui-slab span {
-  background: linear-gradient(135deg, var(--accent), var(--amber));
-  border-radius: 999px;
-  box-shadow: 0 0 24px rgba(255, 106, 26, 0.3);
-  height: 34px;
-  margin-top: 1.6rem;
-  width: 34px;
-}
-
-.ui-slab strong {
-  color: var(--text);
-  font-size: 0.9rem;
-  line-height: 1;
-}
-
-.ui-slab i {
-  background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.24), transparent 68%),
-    linear-gradient(90deg, rgba(255, 106, 26, 0.26), transparent 52%);
-  border-radius: 999px;
-  display: block;
-  height: 10px;
-  width: 76%;
-}
-
-.slab-primary {
-  animation: slab-float 6s ease-in-out infinite alternate;
-  transform: translate(-74%, -74%);
-}
-
-.slab-secondary {
-  animation: slab-float 7s ease-in-out infinite alternate-reverse;
-  opacity: 0.78;
-  transform: translate(-22%, -50%) scale(0.92);
-}
-
-.slab-tertiary {
-  animation: slab-float 6.5s ease-in-out infinite alternate;
-  opacity: 0.58;
-  transform: translate(-48%, -13%) scale(0.84);
-}
-
 .floating-shapes {
   inset: 0;
   pointer-events: none;
@@ -744,17 +660,17 @@ h3 {
 }
 
 .cube-one {
-  right: 8%;
-  top: 10%;
+  right: 4%;
+  top: 8%;
 }
 
 .cube-two {
   animation-delay: -1.8s;
-  bottom: 8%;
-  height: 38px;
+  bottom: 4%;
+  height: 34px;
   left: 8%;
   opacity: 0.78;
-  width: 38px;
+  width: 34px;
 }
 
 .shape-pill {
@@ -766,8 +682,8 @@ h3 {
   display: block;
   height: 84px;
   position: absolute;
-  right: 2%;
-  top: 56%;
+  right: -2%;
+  top: 54%;
   transform: rotate(-18deg);
   width: 28px;
 }
@@ -791,7 +707,7 @@ h3 {
   position: relative;
   transform: translateY(0);
   transition: transform 220ms ease-out, box-shadow 220ms ease-out;
-  width: min(82vw, 470px);
+  width: min(82vw, 500px);
   z-index: 4;
 }
 
@@ -873,23 +789,23 @@ h3 {
 }
 
 .chip-react {
-  left: 5%;
-  top: 42%;
+  left: 12%;
+  top: 14%;
 }
 
 .chip-figma {
-  right: 12%;
-  top: 18%;
+  right: 13%;
+  top: 12%;
 }
 
 .chip-code {
-  bottom: 12%;
-  right: 18%;
+  bottom: 8%;
+  right: 14%;
 }
 
 .chip-search {
-  bottom: 20%;
-  left: 13%;
+  bottom: 9%;
+  left: 16%;
 }
 
 .hud-card {
@@ -925,14 +841,14 @@ h3 {
 
 .hud-card-top {
   animation: float-slow 4.5s ease-in-out infinite alternate;
-  right: 3%;
+  right: 1%;
   top: 18%;
 }
 
 .hud-card-bottom {
   animation: float-slow 5.2s ease-in-out infinite alternate-reverse;
-  bottom: 15%;
-  left: 1%;
+  bottom: 10%;
+  left: 0;
 }
 
 .reveal {
@@ -1395,7 +1311,6 @@ cite {
   .hero::after,
   .orbit-ring,
   .tech-orbit,
-  .ui-slab,
   .floating-shapes {
     animation: none;
   }
@@ -1462,18 +1377,6 @@ cite {
   .hero-media {
     transform: none;
     width: min(82vw, 350px);
-  }
-
-  .ui-perspective-stack {
-    height: 360px;
-    opacity: 0.6;
-    transform: rotate(-8deg) translate3d(0, 1rem, 0);
-    width: 360px;
-  }
-
-  .ui-slab {
-    min-height: 100px;
-    width: 270px;
   }
 
   .hud-card {
@@ -1585,18 +1488,6 @@ cite {
   to {
     opacity: 1;
     transform: scale(1.04);
-  }
-}
-
-@keyframes slab-float {
-  from {
-    filter: brightness(0.96);
-    margin-top: 0;
-  }
-
-  to {
-    filter: brightness(1.08);
-    margin-top: -16px;
   }
 }
 
