@@ -1485,13 +1485,18 @@ blockquote:hover::before,
 
 .article-body {
   display: grid;
-  gap: 1rem;
+  gap: 1.15rem;
   padding: clamp(1.25rem, 4vw, 2rem);
 }
 
 .article-body section + section {
   border-top: 1px solid var(--glass-line);
-  padding-top: 1rem;
+  padding-top: 1.15rem;
+}
+
+.article-body section {
+  display: grid;
+  gap: 0.85rem;
 }
 
 .article-body h2,
