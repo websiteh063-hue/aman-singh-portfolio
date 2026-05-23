@@ -1097,6 +1097,10 @@ blockquote:hover::before,
   background: linear-gradient(135deg, rgba(31, 25, 21, 0.92) 0%, rgba(255, 163, 64, 0.25) 45%, rgba(40, 152, 99, 0.18) 100%);
 }
 
+.weather-preview {
+  background: linear-gradient(135deg, rgba(31, 25, 21, 0.92) 0%, rgba(67, 156, 255, 0.25) 44%, rgba(255, 208, 138, 0.18) 100%);
+}
+
 .whatsapp-preview {
   background: linear-gradient(135deg, rgba(31, 25, 21, 0.92) 0%, rgba(37, 211, 102, 0.24) 45%, rgba(255, 106, 26, 0.14) 100%);
 }
