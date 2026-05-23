@@ -262,7 +262,9 @@ p {
   border: 1px solid var(--glass-line);
   border-radius: 999px;
   display: flex;
+  flex-wrap: wrap;
   gap: 0.3rem;
+  justify-content: center;
   padding: 0.32rem;
   color: var(--soft-text);
   font-size: 0.92rem;
@@ -1245,6 +1247,7 @@ blockquote:hover::before,
   color: var(--text);
   font-weight: 820;
   padding: 0.76rem 0.85rem;
+  transition: border-color 180ms ease, color 180ms ease, transform 180ms ease;
 }
 
 .link-list a:hover,
