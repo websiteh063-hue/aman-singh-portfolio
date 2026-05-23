@@ -912,6 +912,25 @@ blockquote p {
   color: color-mix(in srgb, var(--soft-text) 92%, var(--text));
 }
 
+.text-link,
+.stats a,
+.hero-proof-card a {
+  color: var(--accent-soft);
+  font-weight: 860;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--accent) 58%, transparent);
+  text-underline-offset: 0.18em;
+}
+
+.text-link:hover,
+.text-link:focus,
+.stats a:hover,
+.stats a:focus,
+.hero-proof-card a:hover,
+.hero-proof-card a:focus {
+  color: var(--text);
+}
+
 .section,
 .contact {
   margin: 0 auto;
@@ -1198,6 +1217,43 @@ blockquote:hover::before,
   gap: 0.7rem;
 }
 
+.link-hub {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, minmax(280px, 1fr));
+}
+
+.link-hub article {
+  backdrop-filter: blur(18px);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 106, 26, 0.035));
+  border: 1px solid var(--glass-line);
+  border-radius: var(--radius);
+  box-shadow: var(--glass-shadow);
+  padding: 1.25rem;
+}
+
+.link-list {
+  display: grid;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.link-list a {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--glass-line);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-weight: 820;
+  padding: 0.76rem 0.85rem;
+}
+
+.link-list a:hover,
+.link-list a:focus {
+  border-color: var(--accent);
+  color: var(--accent-soft);
+  transform: translateX(4px);
+}
+
 .about {
   backdrop-filter: blur(18px);
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.055), rgba(255, 106, 26, 0.035));
@@ -1290,6 +1346,14 @@ cite {
   font-weight: 860;
 }
 
+.footer-links {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: flex-end;
+}
+
 @media (max-width: 980px) {
   .hero,
   .split,
@@ -1364,6 +1428,7 @@ cite {
   .stats,
   .work-grid,
   .service-list,
+  .link-hub,
   .testimonial-grid {
     grid-template-columns: 1fr;
   }
@@ -1432,6 +1497,10 @@ cite {
     align-items: flex-start;
     flex-direction: column;
     gap: 0.6rem;
+  }
+
+  .footer-links {
+    justify-content: flex-start;
   }
 }
 
