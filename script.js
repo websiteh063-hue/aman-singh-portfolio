@@ -17,10 +17,11 @@ function markPageLoaded() {
 if (document.readyState === "complete") {
   markPageLoaded();
 } else {
+  window.addEventListener("DOMContentLoaded", markPageLoaded, { once: true });
   window.addEventListener("load", markPageLoaded, { once: true });
 }
 
-window.setTimeout(markPageLoaded, 900);
+window.setTimeout(markPageLoaded, 450);
 
 function setTheme(theme) {
   document.documentElement.dataset.theme = theme;
