@@ -815,9 +815,8 @@ h3 {
 
 .hero-media::before {
   background:
-    radial-gradient(circle at 30% 18%, rgba(255, 255, 255, 0.34), transparent 8rem),
-    linear-gradient(135deg, transparent 0 43%, rgba(255, 239, 179, 0.42) 44% 45%, transparent 46%),
-    linear-gradient(45deg, transparent 0 58%, rgba(255, 239, 179, 0.32) 59% 60%, transparent 61%);
+    radial-gradient(circle at 30% 18%, rgba(255, 255, 255, 0.18), transparent 8rem),
+    radial-gradient(circle at 68% 18%, rgba(255, 239, 179, 0.12), transparent 9rem);
   content: "";
   inset: 0;
   mix-blend-mode: screen;
