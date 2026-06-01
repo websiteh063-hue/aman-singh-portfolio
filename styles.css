@@ -1229,6 +1229,10 @@ blockquote:hover::before,
   background: linear-gradient(135deg, rgba(1, 62, 55, 0.95) 0%, rgba(255, 239, 179, 0.3) 42%, rgba(1, 62, 55, 0.72) 100%);
 }
 
+.rejuveta-preview {
+  background: linear-gradient(135deg, rgba(1, 62, 55, 0.95) 0%, rgba(255, 239, 179, 0.32) 38%, rgba(255, 239, 179, 0.16) 100%);
+}
+
 .whatsapp-preview {
   background: linear-gradient(135deg, rgba(1, 62, 55, 0.92) 0%, rgba(255, 239, 179, 0.24) 45%, rgba(255, 239, 179, 0.14) 100%);
 }
