@@ -1706,6 +1706,7 @@ cite {
 @media (max-width: 760px) {
   html,
   body {
+    background: linear-gradient(180deg, #050807 0%, #071310 58%, #013e37 100%);
     max-width: 100%;
     overflow-x: hidden;
     width: 100%;
@@ -1734,8 +1735,65 @@ cite {
     display: none;
   }
 
+  body::before {
+    display: none;
+  }
+
   .tech-background {
     display: none;
+  }
+
+  .site-header,
+  .hero-content,
+  .hero-proof-card,
+  .blog-index-card,
+  .stats,
+  .work-card,
+  .service-list article,
+  .link-hub article,
+  .blog-topic-card,
+  .article-hero,
+  .article-body,
+  .article-sidebar,
+  .article-nav,
+  .about,
+  blockquote,
+  .contact-card,
+  .site-footer,
+  .hud-card,
+  .orbit-chip {
+    backdrop-filter: none;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22);
+  }
+
+  .hero-content,
+  .hero-proof-card,
+  .blog-index-card,
+  .stats,
+  .work-card,
+  .service-list article,
+  .link-hub article,
+  .blog-topic-card,
+  .article-hero,
+  .article-body,
+  .article-sidebar,
+  .article-nav,
+  .about,
+  blockquote,
+  .contact-card {
+    background: rgba(4, 22, 20, 0.86);
+  }
+
+  .section,
+  .contact {
+    content-visibility: auto;
+    contain-intrinsic-size: 720px;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 
   .nav-menu {
@@ -1810,7 +1868,7 @@ cite {
 
   .hero {
     gap: 1.5rem;
-    padding: 1.35rem 1rem 2.5rem;
+    padding: 1rem 1rem 2.5rem;
   }
 
   .blog-hero {
@@ -1835,15 +1893,30 @@ cite {
   }
 
   .hero-stage {
-    min-height: 330px;
+    min-height: 236px;
     max-width: 100%;
     overflow: hidden;
     width: 100%;
   }
 
+  .hero-stage::before,
+  .hero-stage::after,
+  .hero-media::before,
+  .hero-media::after {
+    display: none;
+  }
+
   .hero-media {
+    animation: none;
+    border-radius: 22px;
+    box-shadow: 0 18px 38px rgba(0, 0, 0, 0.34);
     transform: none;
-    width: min(70vw, 260px);
+    width: min(62vw, 220px);
+  }
+
+  .hero-media img,
+  .hero-proof-card img {
+    filter: none;
   }
 
   .hero-content,
@@ -1864,8 +1937,7 @@ cite {
   }
 
   .hud-card {
-    min-width: 126px;
-    padding: 0.72rem;
+    display: none;
   }
 
   .hud-card-top {
@@ -1930,6 +2002,15 @@ cite {
   .contact-card:hover {
     box-shadow: var(--glass-shadow);
     transform: none;
+  }
+
+  .button,
+  .work-card,
+  .service-list article,
+  blockquote,
+  .contact-card,
+  .link-list a {
+    transition: none;
   }
 
   .site-footer {

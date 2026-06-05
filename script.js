@@ -5,6 +5,7 @@ const themeText = document.querySelector(".theme-text");
 const canvas = document.querySelector("#tech-background");
 const year = document.querySelector("#year");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const smallViewport = window.matchMedia("(max-width: 760px)").matches;
 
 if (year) {
   year.textContent = new Date().getFullYear();
@@ -68,7 +69,7 @@ if (navToggle && navMenu) {
 const revealItems = document.querySelectorAll(".reveal");
 
 if (revealItems.length) {
-  if ("IntersectionObserver" in window && !reducedMotion) {
+  if ("IntersectionObserver" in window && !reducedMotion && !smallViewport) {
     const revealObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -90,6 +91,7 @@ if (revealItems.length) {
 const shouldAnimateBackground =
   canvas &&
   !reducedMotion &&
+  !smallViewport &&
   window.innerWidth >= 760;
 
 if (shouldAnimateBackground) {
