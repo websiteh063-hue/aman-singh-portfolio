@@ -1784,12 +1784,6 @@ cite {
     background: rgba(4, 22, 20, 0.86);
   }
 
-  .section,
-  .contact {
-    content-visibility: auto;
-    contain-intrinsic-size: 720px;
-  }
-
   .reveal {
     opacity: 1;
     transform: none;
