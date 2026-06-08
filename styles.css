@@ -1233,7 +1233,7 @@ blockquote:hover::before,
   background: linear-gradient(135deg, rgba(1, 62, 55, 0.95) 0%, rgba(255, 239, 179, 0.32) 38%, rgba(255, 239, 179, 0.16) 100%);
 }
 
-.bail-erp-preview {
+.trinity-konnect-preview {
   background:
     linear-gradient(135deg, rgba(18, 79, 93, 0.92), rgba(12, 24, 39, 0.9)),
     radial-gradient(circle at 20% 20%, rgba(255, 199, 95, 0.28), transparent 34%);
