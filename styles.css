@@ -1239,6 +1239,18 @@ blockquote:hover::before,
     radial-gradient(circle at 20% 20%, rgba(255, 199, 95, 0.28), transparent 34%);
 }
 
+.pricepulse-preview {
+  background:
+    linear-gradient(135deg, rgba(9, 42, 66, 0.94), rgba(1, 62, 55, 0.88)),
+    radial-gradient(circle at 82% 20%, rgba(97, 255, 188, 0.24), transparent 34%);
+}
+
+.birthday-preview {
+  background:
+    linear-gradient(135deg, rgba(97, 34, 73, 0.92), rgba(1, 62, 55, 0.86)),
+    radial-gradient(circle at 18% 24%, rgba(255, 239, 179, 0.34), transparent 36%);
+}
+
 .whatsapp-preview {
   background: linear-gradient(135deg, rgba(1, 62, 55, 0.92) 0%, rgba(255, 239, 179, 0.24) 45%, rgba(255, 239, 179, 0.14) 100%);
 }
