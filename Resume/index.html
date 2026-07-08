@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aman Singh | Resume</title>
+    <meta
+      name="description"
+      content="Aman Singh - Backoffice Executive resume and portfolio."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar" aria-label="Resume actions">
+      <a class="brand" href="#resume" aria-label="Aman Singh resume">
+        <span class="brand-mark">AS</span>
+        <span>Aman Singh</span>
+      </a>
+      <nav class="actions" aria-label="Main links">
+        <a id="portfolioLink" class="button button-secondary" href="#" target="_blank" rel="noreferrer">
+          Portfolio
+        </a>
+        <a id="downloadPdf" class="button" href="output/pdf/Aman-Singh-Resume-ATS.pdf" download>
+          Download PDF
+        </a>
+      </nav>
+    </header>
+
+    <main class="page-shell">
+      <section id="resume" class="resume" aria-label="Aman Singh resume">
+        <aside class="sidebar">
+          <div class="portrait-wrap">
+            <img id="profilePhoto" class="portrait" alt="Aman Singh profile photo" />
+          </div>
+
+          <section class="side-section" aria-labelledby="contactTitle">
+            <h2 id="contactTitle">Contact</h2>
+            <div id="contactList" class="contact-list"></div>
+          </section>
+
+          <section class="side-section" aria-labelledby="skillsTitle">
+            <h2 id="skillsTitle">Expertise Skills</h2>
+            <ul id="skillsList" class="simple-list"></ul>
+          </section>
+
+          <section class="side-section" aria-labelledby="languageTitle">
+            <h2 id="languageTitle">Language</h2>
+            <ul id="languageList" class="simple-list"></ul>
+          </section>
+
+          <section class="side-section" aria-labelledby="interestTitle">
+            <h2 id="interestTitle">Interest</h2>
+            <div id="interestList" class="interest-list"></div>
+          </section>
+
+          <section class="side-section portfolio-card" aria-labelledby="portfolioTitle">
+            <h2 id="portfolioTitle">Portfolio</h2>
+            <a id="portfolioQrLink" class="qr-link" href="#" target="_blank" rel="noreferrer">
+              <img id="portfolioQr" class="qr-code" alt="Portfolio QR code" />
+              <span>Scan to view portfolio</span>
+            </a>
+          </section>
+        </aside>
+
+        <article class="content">
+          <header class="hero">
+            <p class="eyebrow" id="resumeTitle"></p>
+            <h1 id="resumeName"></h1>
+          </header>
+
+          <section class="resume-section" aria-labelledby="profileTitle">
+            <div class="section-heading">
+              <span class="section-number">01</span>
+              <h2 id="profileTitle">Professional Profile</h2>
+            </div>
+            <p id="profileText" class="profile-text"></p>
+          </section>
+
+          <section class="resume-section" aria-labelledby="educationTitle">
+            <div class="section-heading">
+              <span class="section-number">02</span>
+              <h2 id="educationTitle">Education</h2>
+            </div>
+            <div id="educationList" class="education-list"></div>
+          </section>
+
+          <section class="resume-section" aria-labelledby="experienceTitle">
+            <div class="section-heading">
+              <span class="section-number">03</span>
+              <h2 id="experienceTitle">Experience</h2>
+            </div>
+            <div id="experienceList" class="timeline"></div>
+          </section>
+        </article>
+      </section>
+    </main>
+
+    <script src="resume-data.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

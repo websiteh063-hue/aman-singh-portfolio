@@ -1225,6 +1225,12 @@ blockquote:hover::before,
   background: linear-gradient(135deg, rgba(1, 62, 55, 0.92) 0%, rgba(255, 239, 179, 0.22) 45%, rgba(255, 239, 179, 0.14) 100%);
 }
 
+.resume-preview {
+  background:
+    radial-gradient(circle at 82% 18%, rgba(255, 239, 179, 0.32), transparent 7rem),
+    linear-gradient(135deg, rgba(9, 35, 74, 0.96) 0%, rgba(1, 62, 55, 0.86) 52%, rgba(255, 239, 179, 0.18) 100%);
+}
+
 .gomart-preview {
   background: linear-gradient(135deg, rgba(1, 62, 55, 0.95) 0%, rgba(255, 239, 179, 0.3) 42%, rgba(1, 62, 55, 0.72) 100%);
 }
