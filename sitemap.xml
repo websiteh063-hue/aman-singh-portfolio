@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://websiteh063-hue.github.io/aman-singh-portfolio/</loc>
@@ -75,6 +75,12 @@
   <url>
     <loc>https://websiteh063-hue.github.io/aman-singh-portfolio/blog/real-time-weather-travel-dashboard.html</loc>
     <lastmod>2026-06-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://websiteh063-hue.github.io/aman-singh-portfolio/blog/aman-singh-ats-resume.html</loc>
+    <lastmod>2026-07-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
