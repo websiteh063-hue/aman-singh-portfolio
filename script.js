@@ -88,133 +88,180 @@ if (revealItems.length) {
   }
 }
 
-const shouldAnimateBackground =
-  canvas &&
-  !reducedMotion &&
-  !smallViewport &&
-  window.innerWidth >= 760;
+// 3D Card Tilt Physics Engine (UI/UX Pro Max)
+const tiltCards = document.querySelectorAll(".work-card, .service-list article, .contact-card, .hud-card, .stats div");
 
-if (shouldAnimateBackground) {
-  const ctx = canvas.getContext("2d");
-  const points = [];
-  const pointer = { x: 0, y: 0, active: false };
-  let width = 0;
-  let height = 0;
-  let animationFrame = 0;
-  let lastDraw = 0;
-
-  function resizeCanvas() {
-    const pixelRatio = 1;
-    width = window.innerWidth;
-    height = window.innerHeight;
-    canvas.width = Math.floor(width * pixelRatio);
-    canvas.height = Math.floor(height * pixelRatio);
-    canvas.style.width = `${width}px`;
-    canvas.style.height = `${height}px`;
-    ctx.setTransform(pixelRatio, 0, 0, pixelRatio, 0, 0);
-
-    const pointCount = Math.min(34, Math.max(18, Math.floor(width / 46)));
-    points.length = 0;
-
-    for (let index = 0; index < pointCount; index += 1) {
-      points.push({
-        x: Math.random() * width,
-        y: Math.random() * height,
-        z: Math.random() * 0.8 + 0.2,
-        vx: (Math.random() - 0.5) * 0.42,
-        vy: (Math.random() - 0.5) * 0.42,
-      });
-    }
-  }
-
-  function getThemeColors() {
-    const isLight = document.documentElement.dataset.theme === "light";
-    return {
-      dot: isLight ? "rgba(1, 62, 55, 0.58)" : "rgba(255, 239, 179, 0.72)",
-      line: isLight ? "rgba(1, 62, 55, " : "rgba(255, 239, 179, ",
-      beam: isLight ? "rgba(1, 62, 55, 0.11)" : "rgba(255, 239, 179, 0.11)",
-    };
-  }
-
-  function draw(timestamp = 0) {
-    if (timestamp - lastDraw < 33) {
-      animationFrame = window.requestAnimationFrame(draw);
-      return;
+if (tiltCards.length && !reducedMotion) {
+  tiltCards.forEach((card) => {
+    let glare = card.querySelector(".card-glare-3d");
+    if (!glare) {
+      glare = document.createElement("div");
+      glare.className = "card-glare-3d";
+      card.appendChild(glare);
     }
 
-    lastDraw = timestamp;
-    const colors = getThemeColors();
-    ctx.clearRect(0, 0, width, height);
+    const maxTilt = 12;
 
-    ctx.strokeStyle = colors.beam;
-    ctx.lineWidth = 1;
-    for (let y = height * 0.2; y < height; y += 92) {
-      ctx.beginPath();
-      ctx.moveTo(width * 0.1, y);
-      ctx.lineTo(width * 0.92, y - height * 0.18);
-      ctx.stroke();
-    }
+    card.addEventListener("mousemove", (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = event.clientX - rect.left;
+      const y = event.clientY - rect.top;
 
-    points.forEach((point, index) => {
-      point.x += point.vx * point.z;
-      point.y += point.vy * point.z;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
 
-      if (point.x < -40) point.x = width + 40;
-      if (point.x > width + 40) point.x = -40;
-      if (point.y < -40) point.y = height + 40;
-      if (point.y > height + 40) point.y = -40;
+      const rotateX = ((y - centerY) / centerY) * -maxTilt;
+      const rotateY = ((x - centerX) / centerX) * maxTilt;
 
-      for (let nextIndex = index + 1; nextIndex < points.length; nextIndex += 2) {
-        const other = points[nextIndex];
-        const distance = Math.hypot(point.x - other.x, point.y - other.y);
+      const percentX = (x / rect.width) * 100;
+      const percentY = (y / rect.height) * 100;
 
-        if (distance < 145) {
-          const alpha = (1 - distance / 145) * 0.34;
-          ctx.strokeStyle = `${colors.line}${alpha})`;
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(point.x, point.y);
-          ctx.lineTo(other.x, other.y);
-          ctx.stroke();
-        }
+      card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.03, 1.03, 1.03)`;
+
+      if (glare) {
+        const isLight = document.documentElement.dataset.theme === "light";
+        const glareColor = isLight ? "rgba(1, 62, 55, 0.16)" : "rgba(255, 239, 179, 0.26)";
+        glare.style.background = `radial-gradient(circle at ${percentX}% ${percentY}%, ${glareColor}, transparent 65%)`;
       }
-
-      if (pointer.active) {
-        const distance = Math.hypot(point.x - pointer.x, point.y - pointer.y);
-
-        if (distance < 190) {
-          const alpha = (1 - distance / 190) * 0.5;
-          ctx.strokeStyle = `${colors.line}${alpha})`;
-          ctx.beginPath();
-          ctx.moveTo(point.x, point.y);
-          ctx.lineTo(pointer.x, pointer.y);
-          ctx.stroke();
-        }
-      }
-
-      ctx.fillStyle = colors.dot;
-      ctx.beginPath();
-      ctx.arc(point.x, point.y, 1.4 + point.z * 1.7, 0, Math.PI * 2);
-      ctx.fill();
     });
 
-    animationFrame = window.requestAnimationFrame(draw);
+    card.addEventListener("mouseleave", () => {
+      card.style.transform = "perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)";
+      if (glare) {
+        glare.style.background = "none";
+      }
+    });
+  });
+}
+
+// Three.js 3D WebGL Scene & Parallax Background System
+if (canvas && !reducedMotion && !smallViewport) {
+  if (typeof THREE !== "undefined") {
+    try {
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+      camera.position.z = 40;
+
+      const renderer = new THREE.WebGLRenderer({
+        canvas: canvas,
+        alpha: true,
+        antialias: true
+      });
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+      // 3D Floating Geometries
+      const geometries = [
+        new THREE.IcosahedronGeometry(3.5, 1),
+        new THREE.OctahedronGeometry(2.8, 0),
+        new THREE.TorusGeometry(3.2, 0.8, 12, 24),
+        new THREE.TorusKnotGeometry(2.5, 0.6, 64, 8)
+      ];
+
+      const isLight = document.documentElement.dataset.theme === "light";
+      const meshColor = isLight ? 0x013e37 : 0xffefb3;
+
+      const meshMaterial = new THREE.MeshBasicMaterial({
+        color: meshColor,
+        wireframe: true,
+        transparent: true,
+        opacity: 0.28
+      });
+
+      const floatingMeshes = [];
+      const positions = [
+        { x: -22, y: 12, z: -10 },
+        { x: 22, y: -10, z: -15 },
+        { x: -18, y: -18, z: -8 },
+        { x: 18, y: 16, z: -12 }
+      ];
+
+      positions.forEach((pos, i) => {
+        const mesh = new THREE.Mesh(geometries[i % geometries.length], meshMaterial);
+        mesh.position.set(pos.x, pos.y, pos.z);
+        mesh.userData = {
+          rotSpeedX: (Math.random() - 0.5) * 0.008 + 0.003,
+          rotSpeedY: (Math.random() - 0.5) * 0.008 + 0.003,
+          baseY: pos.y,
+          floatOffset: Math.random() * Math.PI * 2
+        };
+        scene.add(mesh);
+        floatingMeshes.push(mesh);
+      });
+
+      // 3D Particle Cloud
+      const particleCount = 240;
+      const particleGeo = new THREE.BufferGeometry();
+      const particlePos = new Float32Array(particleCount * 3);
+
+      for (let i = 0; i < particleCount * 3; i += 3) {
+        particlePos[i] = (Math.random() - 0.5) * 95;
+        particlePos[i + 1] = (Math.random() - 0.5) * 95;
+        particlePos[i + 2] = (Math.random() - 0.5) * 55;
+      }
+
+      particleGeo.setAttribute('position', new THREE.BufferAttribute(particlePos, 3));
+
+      const particleMat = new THREE.PointsMaterial({
+        color: meshColor,
+        size: 1.25,
+        transparent: true,
+        opacity: 0.65
+      });
+
+      const particleSystem = new THREE.Points(particleGeo, particleMat);
+      scene.add(particleSystem);
+
+      // Mouse & Scroll Parallax Tracking
+      let targetMouseX = 0;
+      let targetMouseY = 0;
+      let mouseX = 0;
+      let mouseY = 0;
+      let targetScrollY = 0;
+
+      window.addEventListener("mousemove", (event) => {
+        targetMouseX = (event.clientX / window.innerWidth - 0.5) * 2;
+        targetMouseY = (event.clientY / window.innerHeight - 0.5) * 2;
+      });
+
+      window.addEventListener("scroll", () => {
+        targetScrollY = window.scrollY;
+      }, { passive: true });
+
+      window.addEventListener("resize", () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+      });
+
+      let clock = new THREE.Clock();
+
+      function animate() {
+        requestAnimationFrame(animate);
+        const elapsedTime = clock.getElapsedTime();
+
+        mouseX += (targetMouseX - mouseX) * 0.05;
+        mouseY += (targetMouseY - mouseY) * 0.05;
+
+        camera.position.x = mouseX * 5;
+        camera.position.y = -mouseY * 5 + (targetScrollY * -0.006);
+        camera.lookAt(scene.position);
+
+        floatingMeshes.forEach((mesh) => {
+          mesh.rotation.x += mesh.userData.rotSpeedX;
+          mesh.rotation.y += mesh.userData.rotSpeedY;
+          mesh.position.y = mesh.userData.baseY + Math.sin(elapsedTime * 1.5 + mesh.userData.floatOffset) * 1.2;
+        });
+
+        particleSystem.rotation.y = elapsedTime * 0.035;
+        particleSystem.rotation.x = elapsedTime * 0.018;
+
+        renderer.render(scene, camera);
+      }
+
+      animate();
+    } catch (err) {
+      console.warn("Three.js 3D initialization fallback:", err);
+    }
   }
-
-  window.addEventListener("resize", resizeCanvas);
-  window.addEventListener("pointermove", (event) => {
-    pointer.x = event.clientX;
-    pointer.y = event.clientY;
-    pointer.active = true;
-  });
-  window.addEventListener("pointerleave", () => {
-    pointer.active = false;
-  });
-
-  resizeCanvas();
-  draw();
-
-  window.addEventListener("pagehide", () => {
-    window.cancelAnimationFrame(animationFrame);
-  });
 }

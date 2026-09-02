@@ -1,10 +1,13 @@
-﻿{
-    "entries":  [
-                    {
-                        "path":  ".agents/skills"
-                    },
-                    {
-                        "path":  ".agents/skills/ui-ux-pro-max-skill/cli/assets/skills"
-                    }
-                ]
+{
+  "entries": [
+    {
+      "path": ".agents/skills"
+    },
+    {
+      "path": ".agents/skills/ui-ux-pro-max-skill/cli/assets/skills"
+    },
+    {
+      "path": ".agents/skills/claudedesignskills/.claude/skills"
+    }
+  ]
 }
