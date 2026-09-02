@@ -1,4 +1,4 @@
-const navToggle = document.querySelector(".nav-toggle");
+﻿const navToggle = document.querySelector(".nav-toggle");
 const navMenu = document.querySelector(".nav-menu");
 const themeToggle = document.querySelector(".theme-toggle");
 const themeText = document.querySelector(".theme-text");
@@ -120,7 +120,7 @@ if (tiltCards.length && !reducedMotion) {
 
       if (glare) {
         const isLight = document.documentElement.dataset.theme === "light";
-        const glareColor = isLight ? "rgba(1, 62, 55, 0.16)" : "rgba(255, 239, 179, 0.26)";
+        const glareColor = isLight ? "rgba(79, 70, 229, 0.18)" : "rgba(0, 242, 254, 0.28)";
         glare.style.background = `radial-gradient(circle at ${percentX}% ${percentY}%, ${glareColor}, transparent 65%)`;
       }
     });
@@ -159,7 +159,7 @@ if (canvas && !reducedMotion && !smallViewport) {
       ];
 
       const isLight = document.documentElement.dataset.theme === "light";
-      const meshColor = isLight ? 0x013e37 : 0xffefb3;
+      const meshColor = isLight ? 0x4f46e5 : 0x00f2fe;
 
       const meshMaterial = new THREE.MeshBasicMaterial({
         color: meshColor,

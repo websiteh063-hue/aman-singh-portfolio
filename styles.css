@@ -57,7 +57,7 @@ body {
     radial-gradient(circle at 78% 16%, rgba(255, 239, 179, 0.2), transparent 25rem),
     radial-gradient(circle at 16% 20%, rgba(1, 62, 55, 0.55), transparent 28rem),
     radial-gradient(circle at 50% 92%, rgba(255, 239, 179, 0.1), transparent 34rem),
-    linear-gradient(135deg, #030605 0%, #071310 42%, #013e37 100%);
+    linear-gradient(135deg, #070b14 0%, #0b1329 52%, #0f172a 100%);
   color: var(--text);
   line-height: 1.6;
   margin: 0;
@@ -1316,7 +1316,7 @@ blockquote:hover::before,
   align-items: center;
   background: linear-gradient(135deg, var(--accent) 0%, #fff6c9 100%);
   border-radius: var(--radius);
-  color: #013e37;
+  color: #070b14;
   display: inline-flex;
   font-weight: 920;
   justify-content: center;
@@ -1724,7 +1724,7 @@ cite {
 @media (max-width: 760px) {
   html,
   body {
-    background: linear-gradient(180deg, #050807 0%, #071310 58%, #013e37 100%);
+    background: linear-gradient(180deg, #070b14 0%, #0b1329 58%, #0f172a 100%);
     max-width: 100%;
     overflow-x: hidden;
     width: 100%;
