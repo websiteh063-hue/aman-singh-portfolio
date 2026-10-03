@@ -1,4 +1,4 @@
-window.resumeData = {
+﻿window.resumeData = {
   name: "Aman Singh",
   title: "Back Office Executive | Digital Support Coordinator",
   photo: "assets/aman-singh-profile.jpg",
@@ -9,7 +9,7 @@ window.resumeData = {
   },
   contact: [
     { label: "Phone", value: "9967010828", href: "tel:+919967010828", icon: "phone" },
-    { label: "Email", value: "singhaman4m@gmail.com", href: "mailto:singhaman4m@gmail.com", icon: "mail" },
+    { label: "Email", value: "amansingh4m@gmail.com", href: "mailto:amansingh4m@gmail.com", icon: "mail" },
     { label: "Location", value: "5, Vijay Vihar Colony, Lucknow", href: "", icon: "map-pin" }
   ],
   profile:
